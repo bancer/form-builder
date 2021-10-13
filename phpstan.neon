@@ -1,0 +1,5 @@
+parameters:
+    ignoreErrors:
+        - '/Call to method [a-zA-Z]+\(\) on an unknown class FormHelper./'
+        - '/Parameter \$FormHelper of method Bancer\\FormBuilder\\[a-zA-Z]+::__construct\(\) has invalid typehint type FormHelper./'
+        - '/Property Bancer\\FormBuilder\\[a-zA-Z]+::\$FormHelper has unknown class FormHelper as its type./'

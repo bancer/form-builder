@@ -1,0 +1,35 @@
+{
+    "name": "bancer/form-builder",
+    "description": "HTML forms builder for CakePHP",
+    "require": {
+        "php": ">=5.6"
+    },
+    "require-dev": {
+        "cakephp/cakephp": "3.*",
+        "phpunit/phpunit": "9.*",
+        "phpstan/phpstan": "^0.12.99",
+        "squizlabs/php_codesniffer": "^3.6"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Bancer\\FormBuilder\\": "src/"
+        }
+    },
+    "autoload-dev" : {
+        "psr-4" : {
+            "Bancer\\FormBuilder\\" : ["src/", "tests/"]
+        }
+    },
+    "scripts": {
+        "all-tests": [
+            "@phpstan",
+            "@phpcs",
+            "@phpunit"
+        ],
+        "phpstan": "vendor/bin/phpstan analyse -l 8 -c phpstan.neon src",
+        "phpcs": "vendor/bin/phpcs --standard=PSR12 -p src tests",
+        "phpunit": "vendor/bin/phpunit tests",
+        "phpunit-coverage": "vendor/bin/phpunit tests --coverage-text"
+    }
+}
