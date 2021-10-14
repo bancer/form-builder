@@ -27,6 +27,11 @@
             "@phpcs",
             "@phpunit"
         ],
+        "ci-tests": [
+            "@phpstan",
+            "@phpcs",
+            "@phpunit-coverage"
+        ],
         "phpstan": "vendor/bin/phpstan analyse -l 8 -c phpstan.neon src",
         "phpcs": "vendor/bin/phpcs --standard=PSR12 -p src tests",
         "phpunit": "vendor/bin/phpunit tests",
