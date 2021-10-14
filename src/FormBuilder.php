@@ -93,6 +93,21 @@ class FormBuilder
     }
 
     /**
+     * Closes an HTML form, cleans up values set by FormHelper::create(), and writes hidden
+     * input fields where appropriate.
+     *
+     * Resets some parts of the state, shared among multiple FormHelper::create() calls, to defaults.
+     *
+     * @param mixed[] $secureAttributes Secure attributes which will be passed as HTML attributes
+     *   into the hidden input elements generated for the Security Component.
+     * @return string A closing FORM tag.
+     */
+    public function end($secureAttributes = [])
+    {
+        return $this->FormHelper->end($secureAttributes);
+    }
+
+    /**
      * Generates a simple input HTML element of hidden type.
      *
      * @param string $fieldName This should be "modelname.fieldname".
