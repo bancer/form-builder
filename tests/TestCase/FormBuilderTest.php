@@ -235,4 +235,16 @@ class FormBuilderTest extends TestCase
             </select>';
         $this->assertTextEquals($expected, $TimeTag->__toString());
     }
+
+    public function testNewSubmit()
+    {
+        $SubmitTag = $this->FormBuilder->newSubmit('OK');
+        $expected = '<div class="submit"><input type="submit" value="OK"/></div>';
+        $this->assertEquals($expected, $SubmitTag->__toString());
+    }
+
+    public function testEnd()
+    {
+        $this->assertEquals('</form>', $this->FormBuilder->end());
+    }
 }

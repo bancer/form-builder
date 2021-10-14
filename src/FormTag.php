@@ -4,6 +4,8 @@ namespace Bancer\FormBuilder;
 
 use Bancer\FormBuilder\HtmlAttributeTraits\AutocompleteAttributeTrait;
 use Bancer\FormBuilder\HtmlAttributeTraits\NameAttributeTrait;
+use Bancer\FormBuilder\HtmlAttributeTraits\TemplateVarsAttribute;
+use Bancer\FormBuilder\HtmlAttributeTraits\TypeAttributeTrait;
 
 /**
  * FormTag is responsible to building <form> tag with all necessary attributes.
@@ -12,6 +14,8 @@ class FormTag extends AbstractTag
 {
     use AutocompleteAttributeTrait;
     use NameAttributeTrait;
+    use TemplateVarsAttribute;
+    use TypeAttributeTrait;
 
     /**
      * @var mixed
@@ -61,17 +65,7 @@ class FormTag extends AbstractTag
     /**
      * @var mixed
      */
-    protected $templateVars;
-
-    /**
-     * @var mixed
-     */
     protected $templates;
-
-    /**
-     * @var string
-     */
-    protected $type;
 
     /**
      * @var mixed
@@ -219,19 +213,6 @@ class FormTag extends AbstractTag
     }
 
     /**
-     * Provide template variables for the formStart template.
-     *
-     * @param mixed $templateVars Template variables.
-     * @return $this
-     */
-    public function templateVars($templateVars)
-    {
-        $this->templateVars = $templateVars;
-        $this->dirtyAttributes[] = 'templateVars';
-        return $this;
-    }
-
-    /**
      * The templates you want to use for this form. Any templates will be merged on top of
      * the already loaded templates. This option can either be a filename in /config that contains
      * the templates you want to load, or an array of templates to use.
@@ -243,26 +224,6 @@ class FormTag extends AbstractTag
     {
         $this->templates = $templates;
         $this->dirtyAttributes[] = 'templates';
-        return $this;
-    }
-
-    /**
-     * Allows you to choose the type of form to create.
-     * If no type is provided then it will be autodetected based on the form context.
-     * Valid values:
-     * 'get' - Will set the form method to HTTP GET.
-     * 'file' - Will set the form method to POST and the 'enctype' to “multipart/form-data”.
-     * 'post' - Will set the method to POST.
-     * 'put', 'delete', 'patch' - Will override the HTTP method with PUT, DELETE or PATCH respectively,
-     * when the form is submitted.
-     *
-     * @param string $type Type.
-     * @return $this
-     */
-    public function type($type)
-    {
-        $this->type = $type;
-        $this->dirtyAttributes[] = 'type';
         return $this;
     }
 

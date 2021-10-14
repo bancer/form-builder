@@ -17,7 +17,9 @@ $FormBuilder->newForm($user)
 echo $FormBuilder->newControl('User.email')
     ->label(__('Email'))
     ->readOnly()
-    ->size(50);
+    ->size(50)
+    ->attribute('data-validated', 1)
+    ->attribute('oninvalid', 'alert('Invalid email')');
 echo $FormBuilder->newControl('User.password')
     ->label(__('Password'))
     ->type('password')

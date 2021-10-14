@@ -93,6 +93,21 @@ class FormBuilder
     }
 
     /**
+     * Closes an HTML form, cleans up values set by FormHelper::create(), and writes hidden
+     * input fields where appropriate.
+     *
+     * Resets some parts of the state, shared among multiple FormHelper::create() calls, to defaults.
+     *
+     * @param mixed[] $secureAttributes Secure attributes which will be passed as HTML attributes
+     *   into the hidden input elements generated for the Security Component.
+     * @return string A closing FORM tag.
+     */
+    public function end($secureAttributes = [])
+    {
+        return $this->FormHelper->end($secureAttributes);
+    }
+
+    /**
      * Generates a simple input HTML element of hidden type.
      *
      * @param string $fieldName This should be "modelname.fieldname".
@@ -167,6 +182,22 @@ class FormBuilder
     public function newTime($fieldName)
     {
         return new TimeTag($this->FormHelper, $fieldName);
+    }
+
+    /**
+     * Creates a submit button element. This method will generate `<input />` elements that
+     * can be used to submit, and reset forms by using $options. Image submits can be created by supplying an
+     * image path for $caption.
+     *
+     * @param string|null $caption The label appearing on the button OR if string contains :// or the
+     * extension .jpg, .jpe, .jpeg, .gif, .png use an image if the extension
+     * exists, AND the first character is /, image is relative to webroot,
+     * OR if the first character is not /, image is relative to webroot/img.
+     * @return \Bancer\FormBuilder\SubmitTag
+     */
+    public function newSubmit($caption = null)
+    {
+        return new SubmitTag($this->FormHelper, $caption);
     }
 
     /*public function newButton()
