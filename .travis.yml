@@ -1,4 +1,5 @@
 language: php
+
 php:
   - '5.6'
   - '7.0'
@@ -7,4 +8,10 @@ php:
   - '7.3'
   - '7.4'
   - '8.0'
-script: composer ci-tests
+
+install:
+  - composer self-update
+  - composer install --dev --no-interaction
+
+script: 
+  - composer ci-tests
