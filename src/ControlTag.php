@@ -13,6 +13,11 @@ use Bancer\FormBuilder\HtmlAttributeTraits\DisabledAttributeTrait;
 use Bancer\FormBuilder\HtmlAttributeTraits\EmptyAttributeTrait;
 use Bancer\FormBuilder\HtmlAttributeTraits\EscapeAttributeTrait;
 use Bancer\FormBuilder\HtmlAttributeTraits\FormAttributeTrait;
+use Bancer\FormBuilder\HtmlAttributeTraits\FormActionAttributeTrait;
+use Bancer\FormBuilder\HtmlAttributeTraits\FormEncTypeAttributeTrait;
+use Bancer\FormBuilder\HtmlAttributeTraits\FormMethodAttributeTrait;
+use Bancer\FormBuilder\HtmlAttributeTraits\FormNoValidateAttributeTrait;
+use Bancer\FormBuilder\HtmlAttributeTraits\FormTargetAttributeTrait;
 use Bancer\FormBuilder\HtmlAttributeTraits\HiddenFieldAttributeTrait;
 use Bancer\FormBuilder\HtmlAttributeTraits\HourAttributeTrait;
 use Bancer\FormBuilder\HtmlAttributeTraits\IntervalAttributeTrait;
@@ -34,6 +39,7 @@ use Bancer\FormBuilder\HtmlAttributeTraits\RoundAttributeTrait;
 use Bancer\FormBuilder\HtmlAttributeTraits\RowsAttributeTrait;
 use Bancer\FormBuilder\HtmlAttributeTraits\SizeAttributeTrait;
 use Bancer\FormBuilder\HtmlAttributeTraits\TimeFormatAttributeTrait;
+use Bancer\FormBuilder\HtmlAttributeTraits\TypeAttributeTrait;
 use Bancer\FormBuilder\HtmlAttributeTraits\ValAttributeTrait;
 use Bancer\FormBuilder\HtmlAttributeTraits\ValueAttributeTrait;
 use Bancer\FormBuilder\HtmlAttributeTraits\WrapAttributeTrait;
@@ -57,6 +63,11 @@ class ControlTag extends AbstractTag
     use EmptyAttributeTrait;
     use EscapeAttributeTrait;
     use FormAttributeTrait;
+    use FormActionAttributeTrait;
+    use FormEncTypeAttributeTrait;
+    use FormMethodAttributeTrait;
+    use FormNoValidateAttributeTrait;
+    use FormTargetAttributeTrait;
     use HiddenFieldAttributeTrait;
     use HourAttributeTrait;
     use IntervalAttributeTrait;
@@ -80,6 +91,7 @@ class ControlTag extends AbstractTag
     use SecondAttributeTrait;
     use SizeAttributeTrait;
     use TimeFormatAttributeTrait;
+    use TypeAttributeTrait;
     use ValAttributeTrait;
     use ValueAttributeTrait;
     use WrapAttributeTrait;
@@ -129,11 +141,6 @@ class ControlTag extends AbstractTag
      * @var mixed[]
      */
     protected $templates;
-
-    /**
-     * @var string
-     */
-    protected $type;
 
     /**
      * Generates a form control element complete with label and wrapper div.
@@ -273,19 +280,6 @@ class ControlTag extends AbstractTag
     {
         $this->templates = $templates;
         $this->dirtyAttributes[] = 'templates';
-        return $this;
-    }
-
-    /**
-     * Force the type of widget you want. e.g. `'select'`.
-     *
-     * @param string $type Element type.
-     * @return $this
-     */
-    public function type($type)
-    {
-        $this->type = $type;
-        $this->dirtyAttributes[] = 'type';
         return $this;
     }
 }

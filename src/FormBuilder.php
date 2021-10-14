@@ -184,6 +184,22 @@ class FormBuilder
         return new TimeTag($this->FormHelper, $fieldName);
     }
 
+    /**
+     * Creates a submit button element. This method will generate `<input />` elements that
+     * can be used to submit, and reset forms by using $options. Image submits can be created by supplying an
+     * image path for $caption.
+     *
+     * @param string|null $caption The label appearing on the button OR if string contains :// or the
+     * extension .jpg, .jpe, .jpeg, .gif, .png use an image if the extension
+     * exists, AND the first character is /, image is relative to webroot,
+     * OR if the first character is not /, image is relative to webroot/img.
+     * @return \Bancer\FormBuilder\SubmitTag
+     */
+    public function newSubmit($caption = null)
+    {
+        return new SubmitTag($this->FormHelper, $caption);
+    }
+
     /*public function newButton()
     {
     }*/
