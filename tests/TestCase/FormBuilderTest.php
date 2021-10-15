@@ -258,4 +258,19 @@ class FormBuilderTest extends TestCase
             </button>';
         $this->assertTextEquals($expected, $ButtonTag->__toString());
     }
+
+    public function testNewPostButton()
+    {
+        $PostButtonTag = $this->FormBuilder->newPostButton('OK', '/login')
+            ->data(['id' => 1]);
+        $expected =
+            '<form method="post" action="/login">
+                <div style="display:none;">
+                    <input type="hidden" name="_method" value="POST"/>
+                </div>
+                <input type="hidden" name="id" value="1"/>
+                <button type="submit">OK</button>
+            </form>';
+        $this->assertTextEquals($expected, $PostButtonTag->__toString());
+    }
 }

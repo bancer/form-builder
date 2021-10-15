@@ -210,4 +210,19 @@ class FormBuilder
     {
         return new ButtonTag($this->FormHelper, $title);
     }
+
+    /**
+     * Create a `<button>` tag with a surrounding `<form>` that submits via POST as default.
+     *
+     * This method creates a `<form>` element. So do not use this method in an already opened form.
+     * Instead use FormHelper::submit() or FormHelper::button() to create buttons inside opened forms.
+     *
+     * @param string $title The button's caption. Not automatically HTML encoded.
+     * @param string|mixed[] $url URL as string or array.
+     * @return \Bancer\FormBuilder\PostButtonTag
+     */
+    public function newPostButton($title, $url)
+    {
+        return new PostButtonTag($this->FormHelper, $title, $url);
+    }
 }

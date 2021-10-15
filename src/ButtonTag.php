@@ -3,6 +3,7 @@
 namespace Bancer\FormBuilder;
 
 use Bancer\FormBuilder\HtmlAttributeTraits\AutofocusAttributeTrait;
+use Bancer\FormBuilder\HtmlAttributeTraits\ConfirmAttributeTrait;
 use Bancer\FormBuilder\HtmlAttributeTraits\DisabledAttributeTrait;
 use Bancer\FormBuilder\HtmlAttributeTraits\EscapeAttributeTrait;
 use Bancer\FormBuilder\HtmlAttributeTraits\FormActionAttributeTrait;
@@ -21,6 +22,7 @@ use Bancer\FormBuilder\HtmlAttributeTraits\ValueAttributeTrait;
 class ButtonTag extends AbstractTag
 {
     use AutofocusAttributeTrait;
+    use ConfirmAttributeTrait;
     use DisabledAttributeTrait;
     use EscapeAttributeTrait;
     use FormActionAttributeTrait;
@@ -37,11 +39,6 @@ class ButtonTag extends AbstractTag
      * @var string|null
      */
     private $caption;
-
-    /**
-     * @var string
-     */
-    protected $confirm;
 
     /**
      * Generates a button element.
@@ -64,18 +61,5 @@ class ButtonTag extends AbstractTag
     {
         $options = $this->getOptions();
         return $this->FormHelper->button($this->caption, $options);
-    }
-
-    /**
-     * Confirm message to show. Form execution will only continue if confirmed then.
-     *
-     * @param string $confirm Confirm message.
-     * @return \Bancer\FormBuilder\ButtonTag
-     */
-    public function confirm($confirm)
-    {
-        $this->confirm = $confirm;
-        $this->dirtyAttributes[] = 'confirm';
-        return $this;
     }
 }
