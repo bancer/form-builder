@@ -200,7 +200,14 @@ class FormBuilder
         return new SubmitTag($this->FormHelper, $caption);
     }
 
-    /*public function newButton()
+    /**
+     * Creates a button element.
+     *
+     * @param string $title The button's caption. Not automatically HTML encoded.
+     * @return \Bancer\FormBuilder\ButtonTag
+     */
+    public function newButton($title)
     {
-    }*/
+        return new ButtonTag($this->FormHelper, $title);
+    }
 }

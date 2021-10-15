@@ -247,4 +247,15 @@ class FormBuilderTest extends TestCase
     {
         $this->assertEquals('</form>', $this->FormBuilder->end());
     }
+
+    public function testNewButton()
+    {
+        $ButtonTag = $this->FormBuilder->newButton('OK')
+            ->confirm('Are you sure?');
+        $expected =
+            '<button type="submit" onclick="if (confirm(&quot;Are you sure?&quot;)) { return true; } return false;">
+                OK
+            </button>';
+        $this->assertTextEquals($expected, $ButtonTag->__toString());
+    }
 }
