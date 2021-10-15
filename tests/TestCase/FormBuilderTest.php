@@ -273,4 +273,15 @@ class FormBuilderTest extends TestCase
             </form>';
         $this->assertTextEquals($expected, $PostButtonTag->__toString());
     }
+
+    public function testNewPostLink()
+    {
+        $PostLinkTag = $this->FormBuilder->newPostLink('Log In')
+            ->url('/login');
+        $actual = $PostLinkTag->__toString();
+        $this->assertStringContainsString('method="post" action="/login"', $actual);
+        $this->assertStringContainsString('<input type="hidden" name="_method" value="POST"/>', $actual);
+        $this->assertStringContainsString('<a href="#" onclick="document.post', $actual);
+        $this->assertStringContainsString('Log In</a>', $actual);
+    }
 }

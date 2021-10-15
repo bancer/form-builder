@@ -4,6 +4,7 @@ namespace Bancer\FormBuilder;
 
 use Bancer\FormBuilder\HtmlAttributeTraits\ConfirmAttributeTrait;
 use Bancer\FormBuilder\HtmlAttributeTraits\DefaultAttributeTrait;
+use Bancer\FormBuilder\HtmlAttributeTraits\DataAttributeTrait;
 use Bancer\FormBuilder\HtmlAttributeTraits\FormAttributeTrait;
 use Bancer\FormBuilder\HtmlAttributeTraits\MethodAttributeTrait;
 use Bancer\FormBuilder\HtmlAttributeTraits\ValueAttributeTrait;
@@ -14,6 +15,7 @@ use Bancer\FormBuilder\HtmlAttributeTraits\ValueAttributeTrait;
 class PostButtonTag extends AbstractTag
 {
     use ConfirmAttributeTrait;
+    use DataAttributeTrait;
     use DefaultAttributeTrait;
     use FormAttributeTrait;
     use MethodAttributeTrait;
@@ -28,11 +30,6 @@ class PostButtonTag extends AbstractTag
      * @var string|mixed[]
      */
     private $url;
-
-    /**
-     * @var mixed[]
-     */
-    protected $data;
 
     /**
      * Create a `<button>` tag with a surrounding `<form>` that submits via POST as default.
@@ -60,18 +57,5 @@ class PostButtonTag extends AbstractTag
     {
         $options = $this->getOptions();
         return $this->FormHelper->postButton($this->bTitle, $this->url, $options);
-    }
-
-    /**
-     * Array with key/value to pass in hidden inputs.
-     *
-     * @param mixed[] $data Hidden input values.
-     * @return \Bancer\FormBuilder\PostButtonTag
-     */
-    public function data($data)
-    {
-        $this->data = $data;
-        $this->dirtyAttributes[] = 'data';
-        return $this;
     }
 }
