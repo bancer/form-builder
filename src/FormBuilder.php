@@ -200,7 +200,48 @@ class FormBuilder
         return new SubmitTag($this->FormHelper, $caption);
     }
 
-    /*public function newButton()
+    /**
+     * Creates a button element.
+     *
+     * @param string $title The button's caption. Not automatically HTML encoded.
+     * @return \Bancer\FormBuilder\ButtonTag
+     */
+    public function newButton($title)
     {
-    }*/
+        return new ButtonTag($this->FormHelper, $title);
+    }
+
+    /**
+     * Create a `<button>` tag with a surrounding `<form>` that submits via POST as default.
+     *
+     * This method creates a `<form>` element. So do not use this method in an already opened form.
+     * Instead use FormHelper::submit() or FormHelper::button() to create buttons inside opened forms.
+     *
+     * @param string $title The button's caption. Not automatically HTML encoded.
+     * @param string|mixed[] $url URL as string or array.
+     * @return \Bancer\FormBuilder\PostButtonTag
+     */
+    public function newPostButton($title, $url)
+    {
+        return new PostButtonTag($this->FormHelper, $title, $url);
+    }
+
+    /**
+     * Creates an HTML link, but access the URL using the method you specify
+     * (defaults to POST). Requires javascript to be enabled in browser.
+     *
+     * This method creates a `<form>` element. If you want to use this method inside of an
+     * existing form, you must use the `block` option so that the new form is being set to
+     * a view block that can be rendered outside of the main form.
+     *
+     * If all you are looking for is a button to submit your form, then you should use
+     * `newButton()` or `newSubmit()` instead.
+     *
+     * @param string $title The content to be wrapped by <a> tags.
+     * @return \Bancer\FormBuilder\PostLinkTag
+     */
+    public function newPostLink($title)
+    {
+        return new PostLinkTag($this->FormHelper, $title);
+    }
 }

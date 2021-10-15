@@ -247,4 +247,41 @@ class FormBuilderTest extends TestCase
     {
         $this->assertEquals('</form>', $this->FormBuilder->end());
     }
+
+    public function testNewButton()
+    {
+        $ButtonTag = $this->FormBuilder->newButton('OK')
+            ->confirm('Are you sure?');
+        $expected =
+            '<button type="submit" onclick="if (confirm(&quot;Are you sure?&quot;)) { return true; } return false;">
+                OK
+            </button>';
+        $this->assertTextEquals($expected, $ButtonTag->__toString());
+    }
+
+    public function testNewPostButton()
+    {
+        $PostButtonTag = $this->FormBuilder->newPostButton('OK', '/login')
+            ->data(['id' => 1]);
+        $expected =
+            '<form method="post" action="/login">
+                <div style="display:none;">
+                    <input type="hidden" name="_method" value="POST"/>
+                </div>
+                <input type="hidden" name="id" value="1"/>
+                <button type="submit">OK</button>
+            </form>';
+        $this->assertTextEquals($expected, $PostButtonTag->__toString());
+    }
+
+    public function testNewPostLink()
+    {
+        $PostLinkTag = $this->FormBuilder->newPostLink('Log In')
+            ->url('/login');
+        $actual = $PostLinkTag->__toString();
+        $this->assertStringContainsString('method="post" action="/login"', $actual);
+        $this->assertStringContainsString('<input type="hidden" name="_method" value="POST"/>', $actual);
+        $this->assertStringContainsString('<a href="#" onclick="document.post', $actual);
+        $this->assertStringContainsString('Log In</a>', $actual);
+    }
 }

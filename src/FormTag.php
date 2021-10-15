@@ -6,6 +6,7 @@ use Bancer\FormBuilder\HtmlAttributeTraits\AutocompleteAttributeTrait;
 use Bancer\FormBuilder\HtmlAttributeTraits\NameAttributeTrait;
 use Bancer\FormBuilder\HtmlAttributeTraits\TemplateVarsAttribute;
 use Bancer\FormBuilder\HtmlAttributeTraits\TypeAttributeTrait;
+use Bancer\FormBuilder\HtmlAttributeTraits\MethodAttributeTrait;
 
 /**
  * FormTag is responsible to building <form> tag with all necessary attributes.
@@ -13,6 +14,7 @@ use Bancer\FormBuilder\HtmlAttributeTraits\TypeAttributeTrait;
 class FormTag extends AbstractTag
 {
     use AutocompleteAttributeTrait;
+    use MethodAttributeTrait;
     use NameAttributeTrait;
     use TemplateVarsAttribute;
     use TypeAttributeTrait;
@@ -41,11 +43,6 @@ class FormTag extends AbstractTag
      * @var string
      */
     protected $idPrefix;
-
-    /**
-     * @var string
-     */
-    protected $method;
 
     /**
      * @var string
@@ -152,25 +149,6 @@ class FormTag extends AbstractTag
     {
         $this->idPrefix = $idPrefix;
         $this->dirtyAttributes[] = 'idPrefix';
-        return $this;
-    }
-
-    /**
-     * Allows you to explicitly override the form’s method.
-     * Valid values:
-     * 'get' - Will set the form method to HTTP GET.
-     * 'file' - Will set the form method to POST and the 'enctype' to “multipart/form-data”.
-     * 'post' - Will set the method to POST.
-     * 'put', 'delete', 'patch' - Will override the HTTP method with PUT, DELETE or PATCH respectively,
-     * when the form is submitted.
-     *
-     * @param string $method Value for the method attribute.
-     * @return $this
-     */
-    public function method($method)
-    {
-        $this->method = $method;
-        $this->dirtyAttributes[] = 'method';
         return $this;
     }
 

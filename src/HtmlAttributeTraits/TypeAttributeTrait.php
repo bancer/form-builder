@@ -23,6 +23,8 @@ trait TypeAttributeTrait
      *
      * In the submit element set to 'reset' for reset inputs. Defaults to 'submit'.
      *
+     * In the button element set to 'submit', 'reset' or 'button'.
+     *
      * @param string $type Element type.
      * @return $this
      */
