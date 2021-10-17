@@ -15,9 +15,9 @@ use Bancer\FormBuilder\HtmlAttributeTraits\SizeAttributeTrait;
 use Bancer\FormBuilder\HtmlAttributeTraits\ValueAttributeTrait;
 
 /**
- * Generates a select element for minutes.
+ * Generates select hours element.
  */
-class MinuteTag extends AbstractTag
+class HourTag extends AbstractTag
 {
     use AutofocusAttributeTrait;
     use DefaultAttributeTrait;
@@ -37,7 +37,7 @@ class MinuteTag extends AbstractTag
     private $fieldName;
 
     /**
-     * Generates a select element for minutes.
+     * Generates select hours element.
      *
      * @param \FormHelper|\Cake\View\Helper\FormHelper $FormHelper Reference to CakePHP FormHelper object.
      * @param string $fieldName This should be "modelname.fieldname".
@@ -49,13 +49,13 @@ class MinuteTag extends AbstractTag
     }
 
     /**
-     * Returns HTML of the select minutes element.
+     * Returns HTML of the select hours element.
      *
      * @return string
      */
     public function __toString()
     {
         $options = $this->getOptions();
-        return $this->FormHelper->minute($this->fieldName, $options);
+        return $this->FormHelper->hour($this->fieldName, $options);
     }
 }
