@@ -185,6 +185,17 @@ class FormBuilder
     }
 
     /**
+     * Generates select year element.
+     *
+     * @param string $fieldName This should be "modelname.fieldname".
+     * @return \Bancer\FormBuilder\YearTag
+     */
+    public function newYear($fieldName)
+    {
+        return new YearTag($this->FormHelper, $fieldName);
+    }
+
+    /**
      * Generates select month element.
      *
      * @param string $fieldName This should be "modelname.fieldname".
