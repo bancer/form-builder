@@ -185,6 +185,17 @@ class FormBuilder
     }
 
     /**
+     * Generates a select element for AM or PM.
+     *
+     * @param string $fieldName Prefix name for the SELECT element.
+     * @return \Bancer\FormBuilder\MeridianTag
+     */
+    public function newMeridian($fieldName)
+    {
+        return new MeridianTag($this->FormHelper, $fieldName);
+    }
+
+    /**
      * Creates a submit button element. This method will generate `<input />` elements that
      * can be used to submit, and reset forms by using $options. Image submits can be created by supplying an
      * image path for $caption.
@@ -243,5 +254,17 @@ class FormBuilder
     public function newPostLink($title)
     {
         return new PostLinkTag($this->FormHelper, $title);
+    }
+
+    /**
+     * Generates label element.
+     * Will automatically generate a `for` attribute if one is not provided.
+     *
+     * @param string $fieldName This should be "modelname.fieldname".
+     * @return \Bancer\FormBuilder\LabelTag
+     */
+    public function newLabel($fieldName)
+    {
+        return new LabelTag($this->FormHelper, $fieldName);
     }
 }

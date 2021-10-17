@@ -284,4 +284,25 @@ class FormBuilderTest extends TestCase
         $this->assertStringContainsString('<a href="#" onclick="document.post', $actual);
         $this->assertStringContainsString('Log In</a>', $actual);
     }
+
+    public function testNewLabel()
+    {
+        $LabelTag = $this->FormBuilder->newLabel('User.password')
+            ->text('Password')
+            ->for('#UserPassword');
+        $expected = '<label for="#UserPassword">Password</label>';
+        $this->assertEquals($expected, $LabelTag->__toString());
+    }
+
+    public function testNewMeridian()
+    {
+        $MeridianTag = $this->FormBuilder->newMeridian('Model.field');
+        $expected =
+            '<select name="Model[field][meridian]">
+                <option value="" selected="selected"></option>
+                <option value="am">am</option>
+                <option value="pm">pm</option>
+            </select>';
+        $this->assertTextEquals($expected, $MeridianTag->__toString());
+    }
 }
