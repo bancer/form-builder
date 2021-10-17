@@ -185,6 +185,17 @@ class FormBuilder
     }
 
     /**
+     * Generates a select element for minutes.
+     *
+     * @param string $fieldName This should be "modelname.fieldname".
+     * @return \Bancer\FormBuilder\MinuteTag
+     */
+    public function newMinute($fieldName)
+    {
+        return new MinuteTag($this->FormHelper, $fieldName);
+    }
+
+    /**
      * Generates a select element for AM or PM.
      *
      * @param string $fieldName Prefix name for the SELECT element.
