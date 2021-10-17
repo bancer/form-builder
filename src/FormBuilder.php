@@ -185,6 +185,17 @@ class FormBuilder
     }
 
     /**
+     * Generates select day element.
+     *
+     * @param string $fieldName This should be "modelname.fieldname".
+     * @return \Bancer\FormBuilder\DayTag
+     */
+    public function newDay($fieldName)
+    {
+        return new DayTag($this->FormHelper, $fieldName);
+    }
+
+    /**
      * Generates select hours element.
      *
      * @param string $fieldName This should be "modelname.fieldname".
