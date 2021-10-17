@@ -185,6 +185,17 @@ class FormBuilder
     }
 
     /**
+     * Generates select month element.
+     *
+     * @param string $fieldName This should be "modelname.fieldname".
+     * @return \Bancer\FormBuilder\MonthTag
+     */
+    public function newMonth($fieldName)
+    {
+        return new MonthTag($this->FormHelper, $fieldName);
+    }
+
+    /**
      * Generates select day element.
      *
      * @param string $fieldName This should be "modelname.fieldname".
