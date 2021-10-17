@@ -7,22 +7,26 @@ use Bancer\FormBuilder\HtmlAttributeTraits\DefaultAttributeTrait;
 use Bancer\FormBuilder\HtmlAttributeTraits\DisabledAttributeTrait;
 use Bancer\FormBuilder\HtmlAttributeTraits\EmptyAttributeTrait;
 use Bancer\FormBuilder\HtmlAttributeTraits\FormAttributeTrait;
+use Bancer\FormBuilder\HtmlAttributeTraits\IntervalAttributeTrait;
 use Bancer\FormBuilder\HtmlAttributeTraits\NameAttributeTrait;
 use Bancer\FormBuilder\HtmlAttributeTraits\RequiredAttributeTrait;
+use Bancer\FormBuilder\HtmlAttributeTraits\RoundAttributeTrait;
 use Bancer\FormBuilder\HtmlAttributeTraits\ValueAttributeTrait;
 
 /**
- * Generates a select element for AM or PM.
+ * Generates a select element for minutes.
  */
-class MeridianTag extends AbstractTag
+class MinuteTag extends AbstractTag
 {
     use AutofocusAttributeTrait;
     use DefaultAttributeTrait;
     use DisabledAttributeTrait;
     use EmptyAttributeTrait;
     use FormAttributeTrait;
+    use IntervalAttributeTrait;
     use NameAttributeTrait;
     use RequiredAttributeTrait;
+    use RoundAttributeTrait;
     use ValueAttributeTrait;
 
     /**
@@ -31,10 +35,10 @@ class MeridianTag extends AbstractTag
     private $fieldName;
 
     /**
-     * Generates a select element for AM or PM.
+     * Generates a select element for minutes.
      *
      * @param \FormHelper|\Cake\View\Helper\FormHelper $FormHelper Reference to CakePHP FormHelper object.
-     * @param string $fieldName Prefix name for the SELECT element.
+     * @param string $fieldName This should be "modelname.fieldname".
      */
     public function __construct($FormHelper, $fieldName)
     {
@@ -43,13 +47,13 @@ class MeridianTag extends AbstractTag
     }
 
     /**
-     * Returns HTML of the select element for AM or PM.
+     * Returns HTML of the select minutes element.
      *
      * @return string
      */
     public function __toString()
     {
         $options = $this->getOptions();
-        return $this->FormHelper->meridian($this->fieldName, $options);
+        return $this->FormHelper->minute($this->fieldName, $options);
     }
 }
