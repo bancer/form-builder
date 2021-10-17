@@ -8,6 +8,7 @@ use Bancer\FormBuilder\HtmlAttributeTraits\DisabledAttributeTrait;
 use Bancer\FormBuilder\HtmlAttributeTraits\EmptyAttributeTrait;
 use Bancer\FormBuilder\HtmlAttributeTraits\FormAttributeTrait;
 use Bancer\FormBuilder\HtmlAttributeTraits\IntervalAttributeTrait;
+use Bancer\FormBuilder\HtmlAttributeTraits\MultipleAttributeTrait;
 use Bancer\FormBuilder\HtmlAttributeTraits\NameAttributeTrait;
 use Bancer\FormBuilder\HtmlAttributeTraits\RequiredAttributeTrait;
 use Bancer\FormBuilder\HtmlAttributeTraits\RoundAttributeTrait;
@@ -25,6 +26,7 @@ class HourTag extends AbstractTag
     use EmptyAttributeTrait;
     use FormAttributeTrait;
     use IntervalAttributeTrait;
+    use MultipleAttributeTrait;
     use NameAttributeTrait;
     use RequiredAttributeTrait;
     use RoundAttributeTrait;
