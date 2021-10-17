@@ -244,4 +244,16 @@ class FormBuilder
     {
         return new PostLinkTag($this->FormHelper, $title);
     }
+
+    /**
+     * Generates label element.
+     * Will automatically generate a `for` attribute if one is not provided.
+     *
+     * @param string $fieldName This should be "modelname.fieldname".
+     * @return \Bancer\FormBuilder\LabelTag
+     */
+    public function newLabel($fieldName)
+    {
+        return new LabelTag($this->FormHelper, $fieldName);
+    }
 }

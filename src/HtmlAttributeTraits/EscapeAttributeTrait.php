@@ -10,7 +10,7 @@ trait EscapeAttributeTrait
     protected $escape;
 
     /**
-     * Whether or not the contents of the textarea should be escaped. Defaults to true.
+     * Whether or not the contents of should be escaped. Defaults to true.
      *
      * @param bool $escape `true` of `false`.
      * @return $this
