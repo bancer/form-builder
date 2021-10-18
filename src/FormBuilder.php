@@ -333,4 +333,15 @@ class FormBuilder
     {
         return new NumberTag($this->FormHelper, $fieldName);
     }
+
+    /**
+     * Generates an email type input element.
+     *
+     * @param string $fieldName This should be "modelname.fieldname".
+     * @return \Bancer\FormBuilder\EmailTag
+     */
+    public function newEmail($fieldName)
+    {
+        return new EmailTag($this->FormHelper, $fieldName);
+    }
 }

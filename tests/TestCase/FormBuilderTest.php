@@ -517,4 +517,11 @@ class FormBuilderTest extends TestCase
         $expected = '<input type="number" name="Model[field]" min="0" max="15" step="3"/>';
         $this->assertEquals($expected, $NumberTag->__toString());
     }
+
+    public function testNewEmail()
+    {
+        $EmailTag = $this->FormBuilder->newEmail('Model.field');
+        $expected = '<input type="email" name="Model[field]"/>';
+        $this->assertEquals($expected, $EmailTag->__toString());
+    }
 }
