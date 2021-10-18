@@ -322,4 +322,15 @@ class FormBuilder
     {
         return new LabelTag($this->FormHelper, $fieldName);
     }
+
+    /**
+     * Generates a number type input element.
+     *
+     * @param string $fieldName This should be "modelname.fieldname".
+     * @return \Bancer\FormBuilder\NumberTag
+     */
+    public function newNumber($fieldName)
+    {
+        return new NumberTag($this->FormHelper, $fieldName);
+    }
 }
