@@ -507,4 +507,14 @@ class FormBuilderTest extends TestCase
             </select>';
         $this->assertTextEquals($expected, $YearTag->__toString());
     }
+
+    public function testNewNumber()
+    {
+        $NumberTag = $this->FormBuilder->newNumber('Model.field')
+            ->min(0)
+            ->max(15)
+            ->step(3);
+        $expected = '<input type="number" name="Model[field]" min="0" max="15" step="3"/>';
+        $this->assertEquals($expected, $NumberTag->__toString());
+    }
 }
