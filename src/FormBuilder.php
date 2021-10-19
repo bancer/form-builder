@@ -344,4 +344,15 @@ class FormBuilder
     {
         return new EmailTag($this->FormHelper, $fieldName);
     }
+
+    /**
+     * Generates search input element.
+     *
+     * @param string $fieldName This should be "modelname.fieldname".
+     * @return \Bancer\FormBuilder\SearchTag
+     */
+    public function newSearch($fieldName)
+    {
+        return new SearchTag($this->FormHelper, $fieldName);
+    }
 }
