@@ -524,4 +524,11 @@ class FormBuilderTest extends TestCase
         $expected = '<input type="email" name="Model[field]"/>';
         $this->assertEquals($expected, $EmailTag->__toString());
     }
+
+    public function testNewSearch()
+    {
+        $SearchTag = $this->FormBuilder->newSearch('Model.field');
+        $expected = '<input type="search" name="Model[field]"/>';
+        $this->assertEquals($expected, $SearchTag->__toString());
+    }
 }
